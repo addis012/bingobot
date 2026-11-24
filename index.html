@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Jutebingo — Play the Popular Number Game with Friends</title>
+
+<meta name="description" content="Discover Jutebingo, an interactive number game on Telegram. Join game rooms, choose your cards, follow live number calls, and enjoy playing with friends.">
+
+<meta name="robots" content="index, follow">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #0b1220;
+    color: #e5e7eb;
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.7;
+}
+
+.wrap {
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 40px 20px 60px;
+}
+
+.hero {
+    text-align: center;
+    padding: 24px 0 34px;
+}
+
+.logo {
+    width: 132px;
+    height: 132px;
+    margin: 0 auto 16px;
+    border-radius: 28px;
+    background: #ffffff;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,.45);
+}
+
+.logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+h1 {
+    font-size: 27px;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 8px;
+}
+
+p.sub {
+    font-size: 15px;
+    color: #9ca3af;
+    margin-bottom: 26px;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #2AABEE;
+    color: #fff;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: 700;
+    padding: 15px 34px;
+    border-radius: 14px;
+    box-shadow: 0 8px 24px rgba(42,171,238,.35);
+    transition: transform .15s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn svg {
+    width: 22px;
+    height: 22px;
+    fill: #fff;
+}
+
+.note {
+    margin-top: 18px;
+    font-size: 12px;
+    color: #6b7280;
+}
+
+section {
+    background: #0f172a;
+    border: 1px solid #223047;
+    border-radius: 16px;
+    padding: 24px 22px;
+    margin-top: 18px;
+}
+
+h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #F5C518;
+    margin-bottom: 14px;
+}
+
+.step {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 14px;
+}
+
+.step:last-child {
+    margin-bottom: 0;
+}
+
+.num {
+    flex: 0 0 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #1e293b;
+    color: #F5C518;
+    font-weight: 800;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.step p {
+    font-size: 14px;
+    color: #cbd5e1;
+    padding-top: 3px;
+}
+
+details {
+    border-top: 1px solid #1e293b;
+    padding: 12px 0;
+}
+
+details:first-of-type {
+    border-top: none;
+}
+
+summary {
+    cursor: pointer;
+    font-size: 14.5px;
+    font-weight: 600;
+    color: #e5e7eb;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+summary::after {
+    content: "+";
+    color: #F5C518;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+details[open] summary::after {
+    content: "–";
+}
+
+details p {
+    font-size: 13.5px;
+    color: #94a3b8;
+    margin-top: 8px;
+}
+
+footer {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 12px;
+    color: #6b7280;
+}
+
+@media(max-width: 400px) {
+    .wrap {
+        padding: 25px 15px 45px;
+    }
+
+    .btn {
+        padding: 14px 24px;
+        font-size: 15px;
+    }
+}
+</style>
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+
+fbq('init', '2510963462734444');
+fbq('track', 'PageView');
+</script>
+
+<noscript>
+<img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=2510963462734444&ev=PageView&noscript=1"/>
+</noscript>
+<!-- End Meta Pixel Code -->
+
+<base target="_blank">
+
+</head>
+
+<body>
+
+<div class="wrap">
+
+    <div class="hero">
+
+        <div class="logo">
+            <img src="/assets/jutebingo-logo.png" alt="Jutebingo Logo">
+        </div>
+
+        <h1>Jutebingo</h1>
+
+        <p class="sub">
+            A popular number game with a social experience.<br>
+            Connect with friends and enjoy playing on Telegram.
+        </p>
+
+        <a class="btn" id="playBtn" href="https://t.me/Jutebingobot">
+
+            <svg viewBox="0 0 24 24">
+                <path d="M9.04 15.31l-.38 5.32c.54 0 .78-.23 1.06-.5l2.55-2.44 5.28 3.87c.97.53 1.66.25 1.92-.89L21.94 4.9c.31-1.42-.52-1.98-1.46-1.63L3.2 10.9c-1.39.54-1.37 1.32-.24 1.67l4.43 1.38L17.7 6.9c.48-.32.93-.14.56.18"/>
+            </svg>
+
+            Play on Telegram
+
+        </a>
+
+        <div class="note">
+            Telegram-based game · No additional download required · 18+
+        </div>
+
+    </div>
+
+    <section>
+
+        <h2>How to Play</h2>
+
+        <div class="step">
+            <div class="num">1</div>
+            <p>
+                <b>Open the Bot.</b>
+                Click the Play on Telegram button above to open the official Jutebingo bot in Telegram. No additional registration form is required.
+            </p>
+        </div>
+
+        <div class="step">
+            <div class="num">2</div>
+            <p>
+                <b>Choose a Game Room.</b>
+                Browse available game rooms and select one that suits you. Rooms are organized according to player availability.
+            </p>
+        </div>
+
+        <div class="step">
+            <div class="num">3</div>
+            <p>
+                <b>Select Your Bingo Cards.</b>
+                Each card contains a 5×5 number grid. Choose your preferred cards and participate according to the room's game rules.
+            </p>
+        </div>
+
+        <div class="step">
+            <div class="num">4</div>
+            <p>
+                <b>Follow the Number Calls.</b>
+                Numbers are announced one by one through audio calls. Matching numbers are automatically highlighted on your cards.
+            </p>
+        </div>
+
+        <div class="step">
+            <div class="num">5</div>
+            <p>
+                <b>Complete a Winning Pattern.</b>
+                Follow the game instructions and complete the required row, column, or diagonal pattern to qualify as a winner.
+            </p>
+        </div>
+
+    </section>
+
+    <section>
+
+        <h2>Frequently Asked Questions</h2>
+
+        <details>
+            <summary>Do I need to download anything?</summary>
+            <p>
+                No additional application is required. Jutebingo operates through Telegram. Simply open the bot using your Telegram account.
+            </p>
+        </details>
+
+        <details>
+            <summary>Can I play for free?</summary>
+            <p>
+                Free game options may be available to eligible players. Check the bot for current room availability, entry requirements, and applicable game rules.
+            </p>
+        </details>
+
+        <details>
+            <summary>Can I play with my friends?</summary>
+            <p>
+                Yes. You can share your invitation link with friends and invite them to join Jutebingo. Referral rewards, if available, are subject to the applicable terms and conditions.
+            </p>
+        </details>
+
+        <details>
+            <summary>Which languages are supported?</summary>
+            <p>
+                Jutebingo supports Amharic, Afaan Oromo, Tigrinya, and English, including audio number announcements.
+            </p>
+        </details>
+
+        <details>
+            <summary>How are numbers selected?</summary>
+            <p>
+                Numbers are selected randomly by the game server. All players participating in the same round receive the same number calls. Winning patterns are checked automatically according to the game rules.
+            </p>
+        </details>
+
+        <details>
+            <summary>Who can play Jutebingo?</summary>
+            <p>
+                Jutebingo is intended for adults aged 18 and above. Please check local laws and regulations before participating. Play responsibly.
+            </p>
+        </details>
+
+    </section>
+
+    <footer>
+        Jutebingo © 2026 · Play Responsibly · 18+
+    </footer>
+
+</div>
+
+<script>
+(function () {
+
+    try {
+
+        // Preserve referral codes
+        var m = (location.search || "").match(/[?&](?:ref|start)=([A-Za-z0-9_-]+)/);
+
+        var url = "https://t.me/Jutebingobot";
+
+        if (m) {
+            url += "?start=ref_" + m[1];
+        }
+
+        document.getElementById("playBtn").href = url;
+
+        // Track Telegram button clicks as Lead events
+        document.getElementById("playBtn").addEventListener("click", function () {
+
+            try {
+                if (window.fbq) {
+                    fbq("track", "Lead");
+                }
+            } catch (_) {}
+
+        });
+
+        // Meta ad-click attribution
+        (function () {
+
+            try {
+
+                if (m) return;
+
+                var q = new URLSearchParams(location.search);
+
+                var fbclid = q.get("fbclid");
+
+                var ck = function (n) {
+                    var mm = document.cookie.match(
+                        new RegExp("(?:^|; )" + n + "=([^;]*)")
+                    );
+
+                    return mm ? decodeURIComponent(mm[1]) : "";
+                };
+
+                var fbc = ck("_fbc") ||
+                    (fbclid ? "fb.1." + Date.now() + "." + fbclid : "");
+
+                var fbp = ck("_fbp");
+
+                if (!fbc && !fbp) return;
+
+                fetch("/api/meta-click", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        fbc: fbc,
+                        fbp: fbp,
+                        ua: navigator.userAgent,
+                        utm_source: q.get("utm_source") || "",
+                        utm_medium: q.get("utm_medium") || "",
+                        utm_campaign: q.get("utm_campaign") || "",
+                        utm_content: q.get("utm_content") || "",
+                        utm_term: q.get("utm_term") || ""
+                    })
+                })
+                .then(function (r) {
+                    return r.json();
+                })
+                .then(function (j) {
+
+                    if (j && j.code) {
+                        document.getElementById("playBtn").href =
+                            url + "?start=mc_" + j.code;
+                    }
+
+                })
+                .catch(function () {});
+
+            } catch (_) {}
+
+        })();
+
+    } catch (e) {}
+
+})();
+</script>
+
+</body>
+</html>
+```
